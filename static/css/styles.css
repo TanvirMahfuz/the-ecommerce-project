@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  transition: ease-in-out 250ms;
+}
+body {
+  background-image: url("/desk-3076954_1280.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 10px 20%;
+}
+.title p {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+.title h1 {
+  font-size: 60px;
+  font-weight: 800;
+}
+
+main .container .row {
+  height: 60%;
+}
+footer {
+  display: flex;
+  justify-content: center;
+}
+a {
+  color: black;
+}
+.t {
+  font-weight: 600;
+  font-size: 17px;
+}

@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+* {
+  font-family: "Raleway", sans-serif;
+  transition: ease-in-out 500ms;
+}
+.log-in {
+  padding: 5px;
+  margin: 0px 5px;
+}
+.card {
+  animation: text-appear 1s ease-in-out;
+}
+.card-img {
+  animation: smooth-display 1s;
+}
+.card-body {
+  animation: text-appear 1s ease-in-out;
+}
+@keyframes smooth-display {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes roll {
+  from {
+    transform: translate(200px, -400px) rotate(0deg);
+  }
+  to {
+    transform: translate(200px, -400px) rotate(360deg);
+  }
+}
+@keyframes text-appear {
+  from {
+    opacity: 0;
+    transform: translate(0, 40px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

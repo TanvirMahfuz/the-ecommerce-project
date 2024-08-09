@@ -7,7 +7,7 @@ formEl.addEventListener("submit", (e) => {
   fetch("http://localhost:3000/api/add", {
     method: "POST",
     body: JSON.stringify(product),
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
   })
     .then((res) => {
       return res.json();
@@ -19,6 +19,7 @@ formEl.addEventListener("submit", (e) => {
         window.location.reload();
       } else {
         // document.getElementById("err").style.display = "block";
+        console.log(res.msg);
       }
     })
     .catch((error) => {

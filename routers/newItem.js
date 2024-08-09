@@ -15,7 +15,12 @@ router.get("", isAuthenticated, (req, res) => {
 router.post("", isAuthenticated, async (req, res) => {
   try {
     const addItem = await require("../database/additem")(req.body);
-    res.status(200).send({ msg: addItem });
+    const createNewItem = await require("../controllers/product.controller")(
+      req,
+      res,
+    );
+    if (typeof createNewItem == "undefined")
+      res.status(200).send({ msg: addItem });
   } catch (err) {
     console.log(err);
     res.status(500).send({ msg: "internal server error" });

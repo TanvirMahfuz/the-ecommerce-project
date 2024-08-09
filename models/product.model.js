@@ -5,23 +5,21 @@ const obj = {
     type: String,
     required: true,
   },
-  price: {
+  unitPrice: {
     type: Number,
     required: true,
   },
   qty: {
     type: Number,
-    required: True,
+    required: true,
   },
   productImg: {
     type: String,
   },
-  owner: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Users",
-    },
-  ],
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users",
+  },
 };
 
 const Products = mongoose.model(

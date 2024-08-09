@@ -2,16 +2,16 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-const {isAuthenticated, saveToDB} = require("./auth/authTools");
+const { isAuthenticated, saveToDB } = require("./auth/authTools");
 const getUser = require("../database/getUser");
-
+const ApiError = require("../utils/apiErrors");
 //returns the cart page
 router.get("", isAuthenticated, (req, res) => {
   try {
     res.sendFile(path.join(__dirname + "/../static/html/cart.html"));
   } catch (error) {
     console.log(error);
-    res.send(500, {message: "internal server error"});
+    res.send(500, { message: "internal server error" });
   }
 });
 
@@ -28,7 +28,7 @@ let cart = new Set();
 router.get("/cartData", isAuthenticated, (req, res) => {
   const fillData = require("../database/fillCart");
   const data = fillData(user.cart);
-  res.status(200).send({data: data});
+  res.status(200).send({ data: data });
 });
 
 //adds item to the cart
@@ -48,7 +48,7 @@ router.post("", isAuthenticated, (req, res) => {
       }
       return instance;
     });
-    res.status(200).send({msg: "ok"});
+    res.status(200).send({ msg: "ok" });
   } catch (error) {
     console.log(error);
     res.status(500).send("internal server error");
@@ -68,6 +68,6 @@ router.post("/unselectItem", (req, res) => {
     }
     return instance;
   });
-  res.status(200).send({msg: id});
+  res.status(200).send({ msg: id });
 });
 module.exports = router;

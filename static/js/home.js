@@ -61,11 +61,11 @@ async function createPage(products) {
   console.log(products_cnt);
 }
 
-// Handling form submission
+// Handling search submission
 const formEl = document.getElementById("search-form");
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
-  const search = formEl.querySelector('input[name="search"]'); // Ensure 'search' is defined
+  const search = formEl.querySelector("#search"); // Ensure 'search' is defined
   if (search.value.trim() === "") {
     return;
   }

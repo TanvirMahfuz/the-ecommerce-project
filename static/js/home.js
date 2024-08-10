@@ -39,12 +39,12 @@ async function createPage(products) {
         col.innerHTML = `
           <div class="card">
             <div class="d-flex justify-content-center">
-              <img src="${product.Img}" class="card-img p-3" style="width: 80%; height:auto" alt="${product.ProductName}" />
+              <img src="${product.productImg}" class="card-img p-3" style="width: 80%; height:auto" alt="${product.name}" />
             </div>
             <div class="card-body">
-              <h5 class="card-title">${product.ProductName}</h5>
+              <h5 class="card-title">${product.name}</h5>
               <p class="card-text">
-                ${product.Qty} ${product.ProductName} at price ${product.UnitPrice} per product
+                ${product.qty} ${product.name} at price ${product.unitPrice} per product
               </p>
               <a href="#" onclick="addToCart('${product._id}')" class="btn btn-dark">
                 Add to cart
@@ -85,8 +85,8 @@ formEl.addEventListener("submit", (e) => {
 
 // Fetch initial data
 axios
-  .get("https://crud.teamrabbil.com/api/v1/ReadProduct")
-  // .get("http://localhost:3000/api/home/getData")
+  //.get("https://crud.teamrabbil.com/api/v1/ReadProduct")
+  .get("http://localhost:3000/api/home/getData")
   .then((res) => {
     console.log(res.data);
     createPage(res.data.data);

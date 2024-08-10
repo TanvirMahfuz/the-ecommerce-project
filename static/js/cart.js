@@ -10,7 +10,9 @@ function startpage() {
     //     console.log(error);
     //   });
     try {
-      fetch("http://localhost:3000/api/cart/cartData")
+      fetch("http://localhost:3000/api/cart/cartData", {
+        credentials: "include",
+      })
         .then((data) => {
           return data.json();
         })
@@ -51,20 +53,22 @@ function startpage() {
             "col-lg-6",
             "col-sm-12",
             "d-flex",
-            "justify-content-center"
+            "justify-content-center",
           );
           try {
-            console.log(parseInt(product.TotalPrice.split(" ")[0]));
-            total += parseInt(product.TotalPrice.split(" ")[0]);
+            // console.log(parseInt(product.TotalPrice.split(" ")[0]));
+            // total += parseInt(product.TotalPrice.split(" ")[0]);
             col.innerHTML = `<div class="card mb-3" style="max-width: 540px;">
               <div class="row g-0">
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
-                  <img src="${product.Img}" class="img-fluid rounded-start" style="height:80%" alt="...">
+                  <img src="${product.productImg}" class="img-fluid rounded-start" style="height:80%" alt="...">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">${product.ProductName}</h5>
-                    <p class="card-text">you are buying ${product.Qty} ${product.ProductName}s for ${product.TotalPrice}</p>
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">you are buying ${product.qty} ${
+                      product.name
+                    }s for ${product.unitPrice * product.qty}</p>
                     <button class="btn btn-dark w-100" onClick="unSelectItem('${product._id}')"> UnSelect </button>
                   </div>
                 </div>
@@ -89,14 +93,15 @@ function unSelectItem(item) {
   //   });c
   fetch("http://localhost:3000/api/cart/unselectItem", {
     method: "POST",
-    body: JSON.stringify({pro_id: item}),
-    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ pro_id: item }),
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
   })
     .then((res) => {
       return res.json();
     })
     .then((res) => {
-      console.log(res.data);
+      console.log(res.msg);
       window.location.reload();
     })
     .catch((error) => {

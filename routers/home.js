@@ -3,8 +3,8 @@ const express = require("express");
 const path = require("path");
 const isLoggedIn = require("../middleware/auth.middleware");
 const router = express.Router();
-const isauthenticated = require("../middleware/auth.middleware");
-
+const isauthenticated = require("../middleware/auth.middleware.js");
+const { getAllProducts } = require("../controllers/product.controller.js");
 router.get("", (req, res) => {
   try {
     res.sendFile(path.join(__dirname + "/../static/html/home.html"));
@@ -13,14 +13,7 @@ router.get("", (req, res) => {
   }
 });
 
-router.get("/getData", (req, res) => {
-  try {
-    const data = require("../database/db.json");
-    res.status(200).send({ data: data });
-  } catch (error) {
-    res.send(500, { messege: "internel server error" });
-  }
-});
+router.get("/getData", getAllProducts);
 router.post("", isauthenticated, (req, res) => {
   try {
     const saveToFile = require("../database/saveToFiles");

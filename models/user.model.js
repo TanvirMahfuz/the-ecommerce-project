@@ -27,12 +27,14 @@ const obj = {
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Products",
+      unique: true,
     },
   ],
   cart: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Products",
+      unique: true,
     },
   ],
   refreshToken: {
@@ -58,7 +60,7 @@ userSchema.methods.generateAccessToken = function () {
   // access tokens are not saved in the database, they are regrenerated and given to users. they are also short lived
   return jwt.sign(
     {
-      id: this._id,
+      _id: this._id,
       email: this.email,
       username: this.username,
     },
@@ -69,7 +71,7 @@ userSchema.methods.generateAccessToken = function () {
 
 userSchema.methods.generateRefreshToken = function () {
   this.refreshToken = jwt.sign(
-    { id: this._id, email: this.email },
+    { _id: this._id, email: this.email },
     process.env.SECRET_REFRESH_KEY,
     { expiresIn: "30d" },
   );

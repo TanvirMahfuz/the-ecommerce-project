@@ -8,7 +8,9 @@ const verifyJWT = async function (req, res, next) {
     req.cookies?.accessToken || req.header("Authorization")?.split(" ")[1];
   if (!accessToken) {
     console.error(new ApiError(401, "InvalidLogin", "User not logged in"));
-    return res.status(400).send({ msg: "user not looged in" });
+    return res.redirect(
+      "http://localhost:3000/api/log?error=user_not_logged_in",
+    );
   }
   //now that we got the access token, we have to decode it to get any sort of information out of it
   const userObj = jwt.verify(accessToken, process.env.SECRET_ACCESS_KEY);

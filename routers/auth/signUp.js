@@ -9,16 +9,5 @@ router.get("", (req, res) => {
 
 const { register } = require("../../controllers/user.controller");
 router.post("", register);
-// router.post("", (req, res) => {
-//   try {
-//     const {name, email, password} = req.body;
-//     const muser = new User(name, email, password);
-//     res.cookie("accessKey", muser.__accesstoken);
-//     res.cookie("refreshKey", muser.__refreshtoken);
-//     res.json({msg: "ok"});
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send("Internal Server error");
-//   }
-// });
+
 module.exports = router;

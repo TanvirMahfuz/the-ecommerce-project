@@ -93,44 +93,20 @@ axios
     axios
       .post("http://localhost:3000/api/home", res.data.data)
       .then((res) => {
-        console.log(res);
+        console.log("user logged in");
         document.getElementById("log-out").style.display = "block";
         document.getElementById("sign-up").style.display = "none";
         document.getElementById("log-in").style.display = "none";
       })
       .catch((error) => {
+        console.log("user not logged in");
         document.getElementById("log-out").style.display = "none";
         document.getElementById("sign-up").style.display = "block";
         document.getElementById("log-in").style.display = "block";
-        if (error.response) {
-          // Request was made and server responded with a status code
-          // that falls out of the range of 2xx
-          console.error("Response error:", {
-            status: error.response.status,
-            headers: error.response.headers,
-            data: error.response.data,
-          });
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("Request error:", error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error("Error message:", error.message);
-        }
       });
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
-    (async () => {
-      try {
-        let response = await fetch("http://localhost:3000/api/home/getData");
-        let data = await response.json();
-        console.log(data);
-        createPage(data.data);
-      } catch (err) {
-        console.error("Fetch error:", err);
-      }
-    })();
   });
 
 // Function to add product to cart

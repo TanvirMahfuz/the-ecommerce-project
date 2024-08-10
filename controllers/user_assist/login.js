@@ -50,7 +50,7 @@ const logIn = async function (req, res) {
       .status(200)
       .cookie("accessToken", accessToken)
       .cookie("refreshToken", refreshToken, options)
-      .send({ msg: "log in success full", data: data });
+      .send({ msg: "ok", data: data });
   } catch (error) {
     console.error(error.name, error.message);
   }

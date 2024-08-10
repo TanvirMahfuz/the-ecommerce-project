@@ -6,7 +6,9 @@ const User = require("../../models/userModel");
 router.get("", (req, res) => {
   res.sendFile(path.join(__dirname + "/../../static/html/signup.html"));
 });
-router.post("", require("../../controllers/user.controller"));
+
+const { register } = require("../../controllers/user.controller");
+router.post("", register);
 // router.post("", (req, res) => {
 //   try {
 //     const {name, email, password} = req.body;

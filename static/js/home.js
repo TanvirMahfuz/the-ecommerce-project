@@ -95,12 +95,14 @@ axios
       .then((res) => {
         console.log("user logged in");
         document.getElementById("log-out").style.display = "block";
+        document.getElementById("profile").style.display = "block";
         document.getElementById("sign-up").style.display = "none";
         document.getElementById("log-in").style.display = "none";
       })
       .catch((error) => {
         console.log("user not logged in");
         document.getElementById("log-out").style.display = "none";
+        document.getElementById("profile").style.display = "none";
         document.getElementById("sign-up").style.display = "block";
         document.getElementById("log-in").style.display = "block";
       });

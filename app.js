@@ -42,4 +42,6 @@ app.use("/api/search", search);
 app.use("/api/log", require("./routers/auth/login"));
 app.use("/api/sign-up", require("./routers/auth/signUp"));
 
+app.use("/api/profile", require("./routers/profile"));
+
 module.exports = app;

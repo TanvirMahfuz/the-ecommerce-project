@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/product.model.js");
-const ApiError = require("../utils/apiErrors");
 router.post("", async (req, res) => {
   try {
     const items = await Product.find({ name: req.body.name });

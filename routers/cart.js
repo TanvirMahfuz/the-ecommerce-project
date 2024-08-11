@@ -25,4 +25,5 @@ router.get("/cartData", isLoggedIn, cartData);
 router.post("", isLoggedIn, addToCart);
 
 router.post("/unselectItem", isLoggedIn, unSelectItem);
+
 module.exports = router;

@@ -4,10 +4,10 @@ formEl.addEventListener("submit", (e) => {
   const formdat = new FormData(formEl); //always have the name property in the form input parameters if you are to use this
   const product = Object.fromEntries(formdat);
   console.log(product);
-  fetch("http://localhost:3000/api/add", {
+  fetch("http://localhost:3000/api/product/add", {
     method: "POST",
     body: JSON.stringify(product),
-    headers: { "Content-Type": "application/json" },
+    headers: {"Content-Type": "application/json"},
   })
     .then((res) => {
       return res.json();

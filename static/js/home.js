@@ -32,7 +32,7 @@ async function createPage(products) {
         "col-md-6",
         "col-sm-12",
         "d-flex",
-        "justify-content-center",
+        "justify-content-center"
       );
 
       try {
@@ -71,7 +71,10 @@ formEl.addEventListener("submit", (e) => {
   }
   const formData = new FormData(formEl);
   axios
-    .post("http://localhost:3000/api/search", Object.fromEntries(formData))
+    .post(
+      "http://localhost:3000/api/product/search",
+      Object.fromEntries(formData)
+    )
     .then((res) => {
       console.log(res.data);
       container.innerHTML = "";
@@ -116,7 +119,7 @@ function addToCart(productId) {
   console.log("Adding to cart:", productId);
   fetch("http://localhost:3000/api/cart", {
     method: "POST",
-    body: JSON.stringify({ pro_id: productId }),
+    body: JSON.stringify({pro_id: productId}),
     headers: {
       "Content-Type": "application/json",
     },
